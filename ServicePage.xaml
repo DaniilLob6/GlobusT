@@ -1,0 +1,77 @@
+﻿<Page x:Class="GlobusT.ServicePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:local="clr-namespace:GlobusT"
+      mc:Ignorable="d"
+      Title="Услуги"
+      Height="Auto" 
+      Width="Auto">
+
+    <Grid Background="#f5f7fa">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <Border Grid.Row="0" 
+                Background="#2c3e50" 
+                Padding="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Заголовок страницы -->
+                <TextBlock Grid.Column="0" 
+                           Text="Услуги компании" 
+                           FontSize="24" 
+                           FontWeight="Bold"
+                           Foreground="White"
+                           VerticalAlignment="Center"/>
+
+                <!-- Кнопка перехода к заявкам -->
+                <Button Grid.Column="1" 
+                        x:Name="RequestButton" 
+                        Content="Заявки" 
+                        Background="#e74c3c"
+                        Foreground="White"
+                        FontSize="14"
+                        FontWeight="SemiBold"
+                        Padding="20,10"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Click="RequestPage_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </Grid>
+        </Border>
+
+        <!-- Список услуг -->
+        <ScrollViewer Grid.Row="1" 
+                      VerticalScrollBarVisibility="Auto" 
+                      HorizontalScrollBarVisibility="Disabled"
+                      Padding="20">
+            <ItemsControl x:Name="ServicesItemControl">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <local:ServiceCard/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Page>
